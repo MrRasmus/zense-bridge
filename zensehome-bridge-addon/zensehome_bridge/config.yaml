@@ -1,0 +1,45 @@
+name: "ZenseHome MQTT Bridge"
+slug: "zensehome_bridge"
+version: "1.0.0"
+description: "Bridge ZenseHome TCP to MQTT Discovery (Lights) with Fade + polling."
+arch:
+  - amd64
+  - aarch64
+  - armv7
+  - armhf
+  - i386
+startup: services
+boot: auto
+init: false
+
+# Uses the MQTT service info automatically if you have Mosquitto add-on
+services:
+  - mqtt:need
+
+options:
+  zense_ip: "0.0.0.0"
+  zense_port: 10001
+  zense_code: 0
+  mqtt_host: ""
+  mqtt_port: 1883
+  mqtt_user: ""
+  mqtt_pass: ""
+  state_poll_sec: 600
+  debounce_ms: 120
+  cmd_gap_sec: 0.10
+  level_on_window_sec: 1.0
+  debug_mqtt: false
+
+schema:
+  zense_ip: str
+  zense_port: int
+  zense_code: int
+  mqtt_host: str
+  mqtt_port: int
+  mqtt_user: str
+  mqtt_pass: password
+  state_poll_sec: int
+  debounce_ms: int
+  cmd_gap_sec: float
+  level_on_window_sec: float
+  debug_mqtt: bool
